@@ -142,19 +142,15 @@
           text-decoration: none;
           border-radius: 50px;
           font-weight: bold;
-          font-size: 1.1em;
           transition: all 0.3s ease;
-          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+          border: none;
+          cursor: pointer;
+          font-size: 1.1em;
       }
 
       .btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-      }
-
-      .btn-primary {
-          background: #e74c3c;
-          color: white;
+          transform: translateY(-3px);
+          box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       }
 
       .social-links {
@@ -169,110 +165,149 @@
           font-size: 1.5em;
       }
 
-      .social-btn {
+      .social-link {
           display: inline-block;
-          padding: 12px 25px;
-          margin: 10px;
-          background: #3498db;
+          margin: 0 15px;
+          padding: 15px;
+          background: #34495e;
           color: white;
           text-decoration: none;
-          border-radius: 30px;
-          font-weight: bold;
+          border-radius: 50%;
+          font-size: 1.5em;
           transition: all 0.3s ease;
       }
 
-      .social-btn.instagram {
-          background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+      .social-link:hover {
+          background: #667eea;
+          transform: translateY(-3px);
       }
 
-      .social-btn.telegram {
-          background: #0088cc;
-      }
-
-      .social-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      }
-
-      @media (max-width: 768px) {
-          .hero {
-              padding: 40px 20px;
-          }
-          
-          .hero h1 {
-              font-size: 2em;
-          }
-          
-          .services, .about, .cta-section {
-              padding: 30px 20px;
-          }
-          
-          .profile-img {
-              width: 150px;
-              height: 150px;
-          }
-      }
-
+      /* Стили для формы */
       .consultation-form {
+          padding: 50px 40px;
           background: white;
-          padding: 40px;
-          border-radius: 15px;
-          margin: 30px 0;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       }
 
-      .consultation-form h3 {
-          color: #2c3e50;
-          margin-bottom: 20px;
-          font-size: 1.8em;
+      .consultation-form h2 {
           text-align: center;
+          font-size: 2.2em;
+          margin-bottom: 30px;
+          color: #2c3e50;
       }
 
       .form-group {
-          margin-bottom: 20px;
+          margin-bottom: 25px;
       }
 
       .form-group label {
           display: block;
           margin-bottom: 8px;
           font-weight: bold;
-          color: #555;
+          color: #2c3e50;
       }
 
       .form-group input,
-      .form-group textarea,
-      .form-group select {
+      .form-group select,
+      .form-group textarea {
           width: 100%;
-          padding: 12px;
+          padding: 15px;
           border: 2px solid #e0e0e0;
-          border-radius: 8px;
-          font-size: 16px;
+          border-radius: 10px;
+          font-size: 1em;
           transition: border-color 0.3s ease;
       }
 
       .form-group input:focus,
-      .form-group textarea:focus,
-      .form-group select:focus {
+      .form-group select:focus,
+      .form-group textarea:focus {
           outline: none;
           border-color: #667eea;
+      }
+
+      .form-group textarea {
+          resize: vertical;
+          min-height: 120px;
+      }
+
+      .form-submit {
+          text-align: center;
+          margin-top: 30px;
       }
 
       .submit-btn {
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           color: white;
-          padding: 15px 40px;
+          padding: 18px 40px;
           border: none;
           border-radius: 50px;
-          font-size: 1.1em;
+          font-size: 1.2em;
           font-weight: bold;
           cursor: pointer;
           transition: all 0.3s ease;
-          width: 100%;
       }
 
       .submit-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+          transform: translateY(-3px);
+          box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+      }
+
+      .submit-btn:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+          transform: none;
+      }
+
+      /* Уведомления */
+      .notification {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          padding: 15px 25px;
+          border-radius: 10px;
+          color: white;
+          font-weight: bold;
+          z-index: 1000;
+          transform: translateX(400px);
+          transition: transform 0.3s ease;
+      }
+
+      .notification.show {
+          transform: translateX(0);
+      }
+
+      .notification.success {
+          background: #27ae60;
+      }
+
+      .notification.error {
+          background: #e74c3c;
+      }
+
+      @media (max-width: 768px) {
+          .hero {
+              padding: 40px 20px;
+          }
+
+          .hero h1 {
+              font-size: 2em;
+          }
+
+          .services,
+          .about,
+          .cta-section,
+          .consultation-form {
+              padding: 30px 20px;
+          }
+
+          .services-grid {
+              grid-template-columns: 1fr;
+              gap: 20px;
+          }
+
+          .profile-img {
+              width: 150px;
+              height: 150px;
+          }
       }
   </style>
 </head>
@@ -281,10 +316,13 @@
       <!-- Hero Section -->
       <div class="card">
           <div class="hero">
-              <img src="https://d41chssnpqdne.cloudfront.net/user_upload_by_module/chat_bot/files/47433950/XuAGNKhAKOgQKcaI.jpg?Expires=1760716742&Signature=PlnNJmTGdo5PuhldxxJl0BJXD--2SSx0us6-K1luktIzkhDyNOf~RlRm8ORHZpEkvi5n6jdexknu73Uf0EnCazu7ngZLTuji~5SKelGrklbkwZpEhKQJmIAlPQcLIeccfS65Z38s3nHa~pWdJsxKWRnWqEc-zr8B-40~nnnYfETUCvOVudouBLhu2Y4YobANUkBAHdKREJX0HoAYqNy2V-qcKFk7aOfLc6m7m--N5rDCQqL52Wp5Nh7Wo78f3wUxE13BKePaXfAWRg5X-ectXR~o8zfmJpZwg7H4XwvFdDp8PVgOQsI6hh3dkFSt6wy1duqqLDLRl~UYpMN-267GZg__&Key-Pair-Id=K3USGZIKWMDCSX" alt="Ольга" class="profile-img">
+              <img src="profile.jpg" alt="Ольга - Финансовый консультант" class="profile-img" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjZjhmOWZhIi8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjgwIiByPSIzMCIgZmlsbD0iIzY2N2VlYSIvPgo8cGF0aCBkPSJNNTAgMTcwYzAtMzMuMTM3IDI2Ljg2My02MCA2MC02MHM2MCAyNi44NjMgNjAgNjB2MzBINTB2LTMweiIgZmlsbD0iIzY2N2VlYSIvPgo8L3N2Zz4K'">
               <h1>Ольга</h1>
-              <p class="subtitle">Финансовый консультант в Германии <span class="flag">🇩🇪</span></p>
-              <p style="font-size: 1.1em; color: #555;">DVAG | Помогаю русскоязычным и украиноязычным семьям</p>
+              <p class="subtitle">Финансовый консультант в Германии</p>
+              <div>
+                  <span class="flag">🇩🇪</span>
+                  <span class="flag">🇷🇺</span>
+              </div>
           </div>
       </div>
 
@@ -295,23 +333,23 @@
               <div class="services-grid">
                   <div class="service-item">
                       <div class="service-icon">💰</div>
-                      <h3>Пенсионные накопления</h3>
-                      <p>Планирование и оптимизация пенсионных накоплений для комфортной старости</p>
+                      <h3>Финансовое планирование</h3>
+                      <p>Помогу составить личный финансовый план и достичь ваших целей</p>
                   </div>
                   <div class="service-item">
-                      <div class="service-icon">🛡️</div>
-                      <h3>Страхование</h3>
-                      <p>Подбор оптимальных страховых продуктов для защиты вас и вашей семьи</p>
-                  </div>
-                  <div class="service-item">
-                      <div class="service-icon">👶</div>
-                      <h3>Накопления для детей</h3>
-                      <p>Создание финансовой подушки для ребёнка к 16/18-летию</p>
+                      <div class="service-icon">🏠</div>
+                      <h3>Ипотека и кредиты</h3>
+                      <p>Консультации по получению ипотеки и других кредитных продуктов</p>
                   </div>
                   <div class="service-item">
                       <div class="service-icon">📈</div>
                       <h3>Инвестиции</h3>
-                      <p>Грамотное вложение денег с учётом ваших целей и рисков</p>
+                      <p>Разработка инвестиционной стратегии для роста капитала</p>
+                  </div>
+                  <div class="service-item">
+                      <div class="service-icon">🛡️</div>
+                      <h3>Страхование</h3>
+                      <p>Подбор оптимальных страховых продуктов для защиты вас и семьи</p>
                   </div>
               </div>
           </div>
@@ -320,133 +358,182 @@
       <!-- About Section -->
       <div class="card">
           <div class="about">
-              <h2 style="margin-bottom: 30px; color: #2c3e50;">Почему выбирают меня?</h2>
-              <p>Знаю, что для многих земляков немецкие документы и термины звучат слишком сложно.</p>
-              <p><strong>Я объясняю простым и понятным языком, чтобы вы могли уверенно принимать решения.</strong></p>
-              <p>Работаю с русскоязычными и украиноязычными семьями, понимаю специфику адаптации в Германии и помогаю разобраться в местной финансовой системе.</p>
+              <h2>Обо мне</h2>
+              <p>Я - сертифицированный финансовый консультант с многолетним опытом работы в Германии. Помогаю русскоговорящим клиентам разобраться в немецкой финансовой системе и принимать правильные финансовые решения.</p>
+              <p>Моя цель - сделать финансовое планирование простым и понятным для каждого. Работаю индивидуально с каждым клиентом, учитывая его уникальные потребности и цели.</p>
           </div>
       </div>
 
       <!-- Consultation Form -->
       <div class="card">
+          <div class="consultation-form">
+              <h2>📅 Записаться на консультацию</h2>
+              <form id="consultationForm">
+                  <div class="form-group">
+                      <label for="topic">Тема консультации:</label>
+                      <select id="topic" name="topic" required>
+                          <option value="">Выберите тему...</option>
+                          <option value="Финансовое планирование">💰 Финансовое планирование</option>
+                          <option value="Ипотека и кредиты">🏠 Ипотека и кредиты</option>
+                          <option value="Инвестиции">📈 Инвестиции</option>
+                          <option value="Страхование">🛡️ Страхование</option>
+                          <option value="Пенсионное планирование">👴 Пенсионное планирование</option>
+                          <option value="Налоговое планирование">📋 Налоговое планирование</option>
+                          <option value="Другое">❓ Другое</option>
+                      </select>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="name">Ваше имя:</label>
+                      <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
+                  </div>
+
+                  <div class="form-group">
+                      <label for="phone">Телефон:</label>
+                      <input type="tel" id="phone" name="phone" required placeholder="+49 или +7...">
+                  </div>
+
+                  <div class="form-group">
+                      <label for="email">Email (необязательно):</label>
+                      <input type="email" id="email" name="email" placeholder="ваш@email.com">
+                  </div>
+
+                  <div class="form-group">
+                      <label for="preferred_date">Предпочтительная дата:</label>
+                      <input type="date" id="preferred_date" name="preferred_date">
+                  </div>
+
+                  <div class="form-group">
+                      <label for="message">Дополнительная информация:</label>
+                      <textarea id="message" name="message" placeholder="Расскажите подробнее о вашем вопросе..."></textarea>
+                  </div>
+
+                  <div class="form-submit">
+                      <button type="submit" class="submit-btn" id="submitBtn">
+                          📨 Отправить заявку
+                      </button>
+                  </div>
+              </form>
+          </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="card">
           <div class="cta-section">
-              <h2>Запишитесь на бесплатную консультацию</h2>
-              <p style="font-size: 1.2em; margin-bottom: 30px;">Обсудим ваши финансовые цели и найдём оптимальные решения</p>
-              
-              <div class="consultation-form">
-                  <h3>Форма записи на консультацию</h3>
-                  <form action="https://docs.google.com/forms/d/e/1FAIpQLSf8example/formResponse" method="POST" target="_blank">
-                      <div class="form-group">
-                          <label for="name">Ваше имя *</label>
-                          <input type="text" id="name" name="entry.name" required>
-                      </div>
-                      
-                      <div class="form-group">
-                          <label for="phone">Телефон *</label>
-                          <input type="tel" id="phone" name="entry.phone" required>
-                      </div>
-                      
-                      <div class="form-group">
-                          <label for="email">Email</label>
-                          <input type="email" id="email" name="entry.email">
-                      </div>
-                      
-                      <div class="form-group">
-                          <label for="topic">Интересующая тема</label>
-                          <select id="topic" name="entry.topic">
-                              <option value="">Выберите тему</option>
-                              <option value="pension">Пенсионные накопления</option>
-                              <option value="insurance">Страхование</option>
-                              <option value="children">Накопления для детей</option>
-                              <option value="investment">Инвестиции</option>
-                              <option value="general">Общая консультация</option>
-                          </select>
-                      </div>
-                      
-                      <div class="form-group">
-                          <label for="message">Дополнительная информация</label>
-                          <textarea id="message" name="entry.message" rows="4" placeholder="Расскажите немного о вашей ситуации или вопросах"></textarea>
-                      </div>
-                      
-                      <button type="button" class="submit-btn" onclick="submitToGoogleSheets()">Записаться на консультацию</button>
-                  </form>
-                  
-                  <p style="margin-top: 20px; font-size: 0.9em; color: #666;">
-                      * Обязательные поля. Я свяжусь с вами в течение 24 часов.
-                  </p>
-              </div>
+              <h2>Готовы начать путь к финансовой независимости?</h2>
+              <p style="font-size: 1.2em; margin-bottom: 30px;">Свяжитесь со мной для персональной консультации</p>
+              <a href="#consultationForm" class="btn">📞 Записаться на консультацию</a>
+              <a href="https://www.instagram.com/olga_finance_/" class="btn" target="_blank">📱 Instagram</a>
           </div>
       </div>
 
       <!-- Social Links -->
       <div class="card">
           <div class="social-links">
-              <h3>Следите за полезными советами</h3>
-              <a href="https://www.instagram.com/olga_finance_/" class="social-btn instagram" target="_blank">
-                  📸 Instagram
-              </a>
-              <a href="https://t.me/Ihr_Finanzbot" class="social-btn telegram" target="_blank">
-                  💬 Telegram Bot
-              </a>
+              <h3>Следите за мной в социальных сетях</h3>
+              <a href="https://www.instagram.com/olga_finance_/" class="social-link" target="_blank">📷</a>
+              <a href="https://t.me/olga_finance_bot" class="social-link" target="_blank">📱</a>
           </div>
       </div>
   </div>
 
+  <!-- Уведомления -->
+  <div id="notification" class="notification"></div>
+
   <script>
-      function submitToGoogleSheets() {
-          // Получаем данные формы
-          const name = document.getElementById('name').value;
-          const phone = document.getElementById('phone').value;
-          const email = document.getElementById('email').value;
-          const topic = document.getElementById('topic').value;
-          const message = document.getElementById('message').value;
-          
-          // Проверяем обязательные поля
-          if (!name || !phone) {
-              alert('Пожалуйста, заполните обязательные поля (Имя и Телефон)');
-              return;
-          }
-          
-          // Формируем URL для Google Sheets
-          const sheetUrl = 'https://docs.google.com/spreadsheets/d/1ahIwIXSh-R6TRBWtoGAMgauY4ouihIoOIKKosckyPww/edit?gid=0#gid=0';
-          
-          // Создаем сообщение для пользователя
-          const confirmMessage = `Спасибо за заявку, ${name}!\n\nВаши данные:\n- Имя: ${name}\n- Телефон: ${phone}\n- Email: ${email || 'не указан'}\n- Тема: ${topic || 'не выбрана'}\n- Сообщение: ${message || 'не указано'}\n\nЯ свяжусь с вами в течение 24 часов.`;
-          
-          alert(confirmMessage);
-          
-          // Открываем Google Sheets в новой вкладке для ручного добавления данных
-          window.open(sheetUrl, '_blank');
-          
-          // Очищаем форму
-          document.querySelector('form').reset();
+      // Конфигурация для Google Sheets
+      const GOOGLE_APPS_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL'; // Заменить на реальный URL
+
+      // Функция для отображения уведомлений
+      function showNotification(message, type = 'success') {
+          const notification = document.getElementById('notification');
+          notification.textContent = message;
+          notification.className = `notification ${type}`;
+          notification.classList.add('show');
+
+          setTimeout(() => {
+              notification.classList.remove('show');
+          }, 5000);
       }
-      
-      // Добавляем анимацию при скролле
-      window.addEventListener('scroll', function() {
-          const cards = document.querySelectorAll('.card');
-          cards.forEach(card => {
-              const cardTop = card.getBoundingClientRect().top;
-              const cardVisible = 150;
-              
-              if (cardTop < window.innerHeight - cardVisible) {
-                  card.style.opacity = '1';
-                  card.style.transform = 'translateY(0)';
+
+      // Функция для форматирования даты
+      function getCurrentDateTime() {
+          const now = new Date();
+          const options = {
+              timeZone: 'Europe/Berlin',
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit',
+              hour: '2-digit',
+              minute: '2-digit',
+              second: '2-digit'
+          };
+          return now.toLocaleString('ru-RU', options);
+      }
+
+      // Обработка отправки формы
+      document.getElementById('consultationForm').addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          const submitBtn = document.getElementById('submitBtn');
+          const originalText = submitBtn.textContent;
+          
+          // Блокируем кнопку и показываем загрузку
+          submitBtn.disabled = true;
+          submitBtn.textContent = '⏳ Отправляем...';
+
+          try {
+              // Собираем данные формы
+              const formData = new FormData(this);
+              const data = {
+                  timestamp: getCurrentDateTime(),
+                  topic: formData.get('topic'),
+                  name: formData.get('name'),
+                  phone: formData.get('phone'),
+                  email: formData.get('email') || '',
+                  preferred_date: formData.get('preferred_date') || '',
+                  message: formData.get('message') || '',
+                  source: 'Веб-сайт'
+              };
+
+              // Отправляем данные в Google Sheets через Google Apps Script
+              const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(data)
+              });
+
+              if (response.ok) {
+                  showNotification('✅ Заявка успешно отправлена! Я свяжусь с вами в ближайшее время.', 'success');
+                  this.reset(); // Очищаем форму
+              } else {
+                  throw new Error('Ошибка сервера');
               }
+
+          } catch (error) {
+              console.error('Ошибка отправки:', error);
+              showNotification('❌ Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз или свяжитесь со мной напрямую.', 'error');
+          } finally {
+              // Разблокируем кнопку
+              submitBtn.disabled = false;
+              submitBtn.textContent = originalText;
+          }
+      });
+
+      // Плавная прокрутка к форме
+      document.querySelectorAll('a[href="#consultationForm"]').forEach(link => {
+          link.addEventListener('click', function(e) {
+              e.preventDefault();
+              document.querySelector('.consultation-form').scrollIntoView({
+                  behavior: 'smooth'
+              });
           });
       });
-      
-      // Инициализация анимации
-      document.addEventListener('DOMContentLoaded', function() {
-          const cards = document.querySelectorAll('.card');
-          cards.forEach((card, index) => {
-              if (index > 0) {
-                  card.style.opacity = '0';
-                  card.style.transform = 'translateY(50px)';
-                  card.style.transition = 'all 0.6s ease';
-              }
-          });
-      });
+
+      // Установка минимальной даты (сегодня)
+      document.getElementById('preferred_date').min = new Date().toISOString().split('T')[0];
   </script>
 </body>
 </html>
