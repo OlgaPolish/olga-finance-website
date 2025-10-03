@@ -1,0 +1,13 @@
+{
+  "name": "olga-finance-website",
+  "version": "1.0.0",
+  "description": "Сайт-визитка финансового консультанта",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "build": "echo 'No build needed'"
+  },
+  "dependencies": {
+    "serve": "^14.0.0"
+  }
+}
